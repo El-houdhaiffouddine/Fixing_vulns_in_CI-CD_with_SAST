@@ -53,12 +53,12 @@ class Employee:
     @property
     def get_email(self):
 
-        return str(f"{self.f_name.replace(" ","").lower()}.{self.l_name.replace(" ","").lower()}@cybersecurity.fr")
+        return str(self.f_name.replace(" ","").lower()+"."+self.l_name.replace(" ","").lower()+"@cybersecurity.fr")
     
     @get_email.setter
     def set_email(self, email):
 
-        self.email = str(f"{self.f_name.replace(" ","").lower()}.{self.l_name.lower()}@cybersecurity.fr")
+        self.email = str(self.f_name.replace(" ","").lower()+"."+self.l_name.lower()+"@cybersecurity.fr")
 
     @property
     def get_gender(self):
