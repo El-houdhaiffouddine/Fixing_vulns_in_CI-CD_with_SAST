@@ -66,7 +66,7 @@ def deleteEmployee():
     
     id = request.args.get('id')
 
-    if id and id is int:
+    if id and type(id) is int:
 
         try:
             Employee.delete_employee(id)
