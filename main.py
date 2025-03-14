@@ -96,7 +96,7 @@ def updateEmployee():
 
     try:
 
-        if id and id is int:
+        if id and type(id) is int:
 
             if first_name:
                 Employee.update_employee(id=id,new_f_name=first_name)
