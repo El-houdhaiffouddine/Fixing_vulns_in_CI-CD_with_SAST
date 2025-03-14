@@ -64,7 +64,7 @@ def addEmployee():
 @app.route("/delete_employee", methods=['DELETE'])   
 def deleteEmployee():
     
-    id = request.args.get('id')
+    id = int(request.args.get('id'))
 
     if id and type(id) is int:
 
