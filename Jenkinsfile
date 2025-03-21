@@ -32,12 +32,13 @@ pipeline {
                         error('Warning: A security issues has been reported ... !')
                     }
                 }
-                sh 
+            
             }
         }
 
         stage('SCA with OWASP Dependency Check'){
-
+                  
+                  echo 'Software Composition Analysis ....'
 
         }
     }
