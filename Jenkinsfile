@@ -51,7 +51,7 @@ pipeline {
         failure {
 
             mail to: 'bensidi.elhoudhaiffouddine@esprit.tn',
-                 from: 'SAP Security',
+                 from: 'Google Security',
                  subject: '[Urgent] Security Alert !',
                  mimeType: 'text/html',
                  body: 'Security vulnerabilities has been reported. Please look in the Jenkins Console for more informations. Thanks !'            
