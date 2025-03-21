@@ -49,8 +49,8 @@ pipeline {
     post {
 
         failure {
-            
-               emailext body: 'A security issues has been reported',mimeType: 'text/html',subject:' [Urgent] Security Alert !',to: 'bensidi.elhoudhaiffouddine@esprit.tn'
+
+               echo 'Pipeline failed !'
 
 
         }
