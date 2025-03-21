@@ -27,7 +27,9 @@ pipeline {
 
                 script {
                     def result = sh(script:'/home/user1/flask/bin/bandit -r /var/lib/jenkins/workspace/DevSecOps/',returnStatus:true)
-                    
+                    if(result !=0){
+                        error('Security vulnerabilities has been reported ... !')
+                    }
                 }
             
             }
@@ -42,25 +44,15 @@ pipeline {
 
         }
 
-        stage('Email'){
-
-            steps {
-                 
-                 emailext to: 'bensidi.elhoudhaiffouddine@esprit.tn',
-                          subject: '[Urgent] Security Alert !',
-                          body: 'A secuity issues has been reported. Please look in your Jenkins Console.',
-                          mimeType: 'text/html'
-
-
-            }
-        }
     }
 
     post {
 
         failure {
 
-            echo 'Test'            
+            mail to: 'bensidi.elhoudhaiffouddine@esprit.tn',
+                 subject: '[Urgent] Security Alert !',
+                 body: 'Security vulnerabilities has been reported. Please look in the Jenkins Console for more informations. Thanks !'            
 
 
         }
