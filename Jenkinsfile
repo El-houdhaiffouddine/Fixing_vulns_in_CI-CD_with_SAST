@@ -24,8 +24,29 @@ pipeline {
         stage('SAST with bandit'){
             steps {
                 echo '###### Static Analysis with Bandit #######\n'
-                sh '/home/user1/flask/bin/bandit -r DevSecOps/'
+
+                script {
+                    def result = sh(script:'/home/user1/flask/bin/bandit -r DevSecOps/',returnStatus:true)
+                    if (result !=0){
+
+                        error('Warning: A security issues has been reported ... !')
+                    }
+                }
+                sh 
             }
+        }
+
+        stage('SCA with OWASP Dependency Check'){
+
+
+        }
+    }
+
+    post {
+
+        failure {
+               echo 'Pipeline failed !'
+
         }
     }
 
