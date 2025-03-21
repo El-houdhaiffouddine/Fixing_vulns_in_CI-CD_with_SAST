@@ -45,8 +45,11 @@ pipeline {
         stage('Email'){
 
             steps {
+                 
+                 mail to: 'bensidi.elhoudhaiffouddine@esprit.tn',
+                       subject: '[Urgent] Security Alert !',
+                       body: 'A secuity issues has been reported. Please look in your Jenkins Console.'
 
-                emailext body: 'A security issues has been reported',mimeType: 'text/html',subject:'[Urgent] Security Alert !',to: 'bensidi.elhoudhaiffouddine@esprit.tn'
             }
         }
     }
