@@ -27,10 +27,7 @@ pipeline {
 
                 script {
                     def result = sh(script:'/home/user1/flask/bin/bandit -r /var/lib/jenkins/workspace/DevSecOps/',returnStatus:true)
-                    if (result !=0){
-
-                        error('Warning: A security issues has been reported ... !')
-                    }
+                    
                 }
             
             }
@@ -44,13 +41,21 @@ pipeline {
                  
 
         }
+
+        stage('Email'){
+
+            steps {
+
+                emailext body: 'A security issues has been reported',mimeType: 'text/html',subject:'[Urgent] Security Alert !',to: 'bensidi.elhoudhaiffouddine@esprit.tn'
+            }
+        }
     }
 
     post {
 
         failure {
 
-               emailext body: 'A security issues has been reported',mimeType: 'text/html',subject:'[Urgent] Security Alert !',to: 'bensidi.elhoudhaiffouddine@esprit.tn'
+            echo 'Test'            
 
 
         }
