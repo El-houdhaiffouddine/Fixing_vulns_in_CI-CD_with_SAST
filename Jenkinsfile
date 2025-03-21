@@ -37,8 +37,11 @@ pipeline {
         }
 
         stage('SCA with OWASP Dependency Check'){
-                  
-                  echo 'Software Composition Analysis ....'
+
+             steps {
+                 echo 'Software Composition Analysis ....'
+             }     
+                 
 
         }
     }
