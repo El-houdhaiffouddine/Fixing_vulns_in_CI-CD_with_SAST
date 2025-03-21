@@ -46,10 +46,9 @@ pipeline {
 
             steps {
                  
-                 emailext recipientList: 'bensidi.elhoudhaiffouddine@esprit.tn',
-                       subject: '[Urgent] Security Alert !',
-                       body: 'A secuity issues has been reported. Please look in your Jenkins Console.',
-                       mimeType: 'text/html'
+                 emailext subject: '[Urgent] Security Alert !',
+                          body: 'A secuity issues has been reported. Please look in your Jenkins Console.',
+                          mimeType: 'text/html'
 
 
             }
