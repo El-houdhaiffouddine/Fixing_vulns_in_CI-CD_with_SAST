@@ -39,6 +39,14 @@ pipeline {
 
              steps {
                  echo 'Software Composition Analysis ....'
+                 script {
+
+                    dependencyCheck additionalArguments:  '--scan /var/lib/jenkins/workspace/DevSecOps/', odcInstallation: 'owasp-dependency-check'
+                    if($? !=0 ){
+                        
+                        error('A security issues has been reported by the OWASP Dependency Check SCA tool !')
+                    }
+                 }
              }     
                  
 
