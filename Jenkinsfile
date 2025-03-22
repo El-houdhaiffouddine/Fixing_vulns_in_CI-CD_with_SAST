@@ -27,9 +27,9 @@ pipeline {
 
                 script {
                     def result = sh(script:'/home/user1/flask/bin/bandit -r /var/lib/jenkins/workspace/DevSecOps/',returnStatus:true)
-                    #if(result !=0){
-                     #   error('Security vulnerabilities has been reported ... !')
-                    #}
+                    //if(result !=0){
+                     //   error('Security vulnerabilities has been reported ... !')
+                    //}
                 }
             
             }
