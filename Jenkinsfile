@@ -55,10 +55,11 @@ pipeline {
 
         always {
 
-            DependencyCheckPublisher failedTotalCritical: 1,
+            DependencyCheckPublisher pattern: 'dependency-check-report.html',
+                                     failedTotalCritical: 1,
                                      failedTotalHigh: 1,
                                      failedTotalLow: 1, 
-                                     stopBuild: true,
+                                     stopBuild: true
 
         }
 
