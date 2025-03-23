@@ -41,8 +41,7 @@ pipeline {
 
                  echo 'Software Composition Analysis ....'
 
-                 dependencyCheck additionalArguments:  '--scan /var/lib/jenkins/workspace/DevSecOps/',
-                                 format: 'html',
+                 dependencyCheck additionalArguments:  '--scan /var/lib/jenkins/workspace/DevSecOps/ --format html',
                                  odcInstallation: 'owasp-dependency-check'
                 
              }     
