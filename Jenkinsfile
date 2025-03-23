@@ -53,7 +53,7 @@ pipeline {
 
             steps {
 
-                 docker build -t flask-app:1.0.0 -f /var/lib/jenkins/workspace/DevSecOps/Flask-App ./var/lib/jenkins/workspace/DevSecOps/
+                 sh 'docker build -t flask-app:1.0.0 -f /var/lib/jenkins/workspace/DevSecOps/Flask-App ./var/lib/jenkins/workspace/DevSecOps/'
 
             }
         }
