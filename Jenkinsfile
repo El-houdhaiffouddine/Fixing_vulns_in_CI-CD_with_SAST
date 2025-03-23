@@ -55,7 +55,6 @@ pipeline {
     post {
 
         always {
-
             
                  dependencyCheckPublisher pattern: 'dependency-check-report.html',
                                      failedTotalCritical: 1,
@@ -70,8 +69,7 @@ pipeline {
             mail to: 'bensidi.elhoudhaiffouddine@esprit.tn',
                  from: 'Google Security',
                  subject: '[Urgent] Security Alert !',
-                 mimeType: 'text/html',
-              d Py  
+                 mimeType: 'text/html', 
                  body: 'Security vulnerabilities has been reported. Please look in the Jenkins Console for more informations. Thanks !'            
 
 
