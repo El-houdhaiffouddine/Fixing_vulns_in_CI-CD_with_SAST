@@ -42,7 +42,7 @@ pipeline {
                  echo 'Software Composition Analysis ....'
 
                  dependencyCheck additionalArguments:  '--scan /var/lib/jenkins/workspace/DevSecOps/',
-                                 format: 'HTML',
+                                 format: 'xml',
                                  odcInstallation: 'owasp-dependency-check'
              }     
                  
@@ -55,7 +55,7 @@ pipeline {
 
         always {
 
-            DependencyCheckPublisher pattern: 'dependency-check-report.html',
+            DependencyCheckPublisher pattern: 'dependency-check-report.xml',
                                      failedTotalCritical: 1,
                                      failedTotalHigh: 1,
                                      failedTotalLow: 1, 
