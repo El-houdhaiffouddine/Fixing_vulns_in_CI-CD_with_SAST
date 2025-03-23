@@ -38,15 +38,12 @@ pipeline {
         stage('SCA with OWASP Dependency Check'){
 
              steps {
-                 echo 'Software Composition Analysis ....'
-                 script {
 
-                    dependencyCheck additionalArguments:  '--scan /var/lib/jenkins/workspace/DevSecOps/', odcInstallation: 'owasp-dependency-check'
-                    if($? !=0 ){
-                        
-                        error('A security issues has been reported by the OWASP Dependency Check SCA tool !')
-                    }
-                 }
+                 echo 'Software Composition Analysis ....'
+
+                 dependencyCheck additionalArguments:  '--scan /var/lib/jenkins/workspace/DevSecOps/',
+                                 format: 'HTML',
+                                 odcInstallation: 'owasp-dependency-check'
              }     
                  
 
@@ -55,6 +52,16 @@ pipeline {
     }
 
     post {
+
+        always {
+
+            DependencyCheckPublisher pattern: 'dependency-check-report.html',
+                                     failedTotalCritical: 1,
+                                     failedTotalHigh: 1,
+                                     failedTotalLow: 1, 
+                                     stopBuild: true,
+
+        }
 
         failure {
 
