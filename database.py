@@ -39,7 +39,7 @@ def add_users(f_name:str,l_name:str,gender:Gender,salary:float):
        
         with new_engine.connect() as connection:
        
-             connection.execute(text(f"INSERT INTO users (first_name, last_name, gender,salary) VALUES (:first_name,:last_name,:gender,:salary)"),[{"first_name":f_name,"last_name":l_name,"gender":gender,"salary":salary}])
+             connection.execute(text("INSERT INTO users (first_name, last_name, gender,salary) VALUES (:first_name,:last_name,:gender,:salary)"),[{"first_name":f_name,"last_name":l_name,"gender":gender,"salary":salary}])
             
              connection.commit()
 
@@ -55,7 +55,7 @@ def delete_user(id:int):
        
            try:
           
-               connection.execute(text(f"DELETE FROM users WHERE (id=:id)"),[{"id":id}])
+               connection.execute(text("DELETE FROM users WHERE (id=:id)"),[{"id":id}])
 
                connection.commit()
 
@@ -75,7 +75,7 @@ def update_user_f_name(id:int, new_f_name:str):
        
            if id and new_f_name:
           
-              connection.execute(text(f"UPDATE users SET first_name=:new_f_name WHERE (id=:id)"),[{"id":id,"new_f_name":new_f_name}])           
+              connection.execute(text("UPDATE users SET first_name=:new_f_name WHERE (id=:id)"),[{"id":id,"new_f_name":new_f_name}])           
               
               connection.commit()
 
@@ -93,7 +93,7 @@ def update_user_l_name(id:int,new_l_name:str):
 
          if id and new_l_name:
           
-            connection.execute(text(f"UPDATE users SET last_name=:new_l_name WHERE (id=:id)"),[{"id":id,"new_l_name":new_l_name}])
+            connection.execute(text("UPDATE users SET last_name=:new_l_name WHERE (id=:id)"),[{"id":id,"new_l_name":new_l_name}])
 
             connection.commit()
 
@@ -111,7 +111,7 @@ def update_salary(id:int,new_salary:float):
 
          if id and new_salary:
            
-            connection.execute(text(f"UPDATE users SET salary=:new_salary WHERE (id=:id)"),[{"id":id,"new_salary":new_salary}])
+            connection.execute(text("UPDATE users SET salary=:new_salary WHERE (id=:id)"),[{"id":id,"new_salary":new_salary}])
          
             connection.commit()
          
