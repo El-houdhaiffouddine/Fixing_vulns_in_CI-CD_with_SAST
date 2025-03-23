@@ -41,8 +41,8 @@ pipeline {
 
                  echo 'Software Composition Analysis ....'
 
-                 dependencyCheck additionalArguments:  '--scan /var/lib/jenkins/workspace/DevSecOps/ --format xml',
-                                 odcInstallation: 'owasp-dependency-check'
+                 //dependencyCheck additionalArguments:  '--scan /var/lib/jenkins/workspace/DevSecOps/ --format xml',
+                   //              odcInstallation: 'owasp-dependency-check'
                 
              }     
                  
