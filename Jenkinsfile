@@ -44,6 +44,12 @@ pipeline {
                  dependencyCheck additionalArguments:  '--scan /var/lib/jenkins/workspace/DevSecOps/',
                                  format: 'xml',
                                  odcInstallation: 'owasp-dependency-check'
+                
+                 DependencyCheckPublisher pattern: 'dependency-check-report.xml',
+                                     failedTotalCritical: 1,
+                                     failedTotalHigh: 1,
+                                     failedTotalLow: 1, 
+                                     stopBuild: true
              }     
                  
 
@@ -55,11 +61,7 @@ pipeline {
 
         always {
 
-            DependencyCheckPublisher pattern: 'dependency-check-report.xml',
-                                     failedTotalCritical: 1,
-                                     failedTotalHigh: 1,
-                                     failedTotalLow: 1, 
-                                     stopBuild: true
+            echo 'Run this always.'
 
         }
 
