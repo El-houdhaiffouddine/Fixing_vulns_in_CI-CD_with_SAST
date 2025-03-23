@@ -26,7 +26,7 @@ pipeline {
                 echo '###### Static Analysis with Bandit #######\n'
 
                 script {
-                    def result = sh(script:'/home/user1/flask/bin/bandit -r /var/lib/jenkins/workspace/DevSecOps/',returnStatus:true)
+                sh '/home/user1/flask/bin/bandit -r /var/lib/jenkins/workspace/DevSecOps/'
                     //if(result !=0){
                      //   error('Security vulnerabilities has been reported ... !')
                     //}
