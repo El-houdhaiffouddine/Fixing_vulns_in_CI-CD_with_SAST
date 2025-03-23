@@ -8,13 +8,21 @@ pipeline {
     }
 
     stages {
-        stage('Pre-commit'){
+        stage('Scan for secret with Talisman and Trufflehog'){
             steps {
                 
                 echo '####### Pre-commit stage ######\n'
                 echo 'Cheking for secrets ...\n'
-                sh 'trufflehog github --repo=https://github.com/El-houdhaiffouddine/Python_with_Flask.git --results=verified,unknown --token=${GITHUB_TOKEN}'
+                script {
+
+                 def result = sh(script:'trufflehog github --repo=https://github.com/El-houdhaiffouddine/Python_with_Flask.git --results=verified,unknown --token=${GITHUB_TOKEN}',returnStatus:true)
                 
+                 if(result != 0){
+
+                    error('Security vulnerabilities has been reported ... !')
+                 }
+                 
+                }
 
 
             }
@@ -26,35 +34,45 @@ pipeline {
                 echo '###### Static Analysis with Bandit #######\n'
 
                 script {
-                sh '/home/user1/flask/bin/bandit -r /var/lib/jenkins/workspace/DevSecOps/'
-                    //if(result !=0){
-                     //   error('Security vulnerabilities has been reported ... !')
-                    //}
+                def result = sh(script:'/home/user1/flask/bin/bandit -r /var/lib/jenkins/workspace/DevSecOps/', returnStatus:true)
+                    if(result !=0){
+                       error('Security vulnerabilities has been reported ... !')
+                    }
                 }
             
             }
         }
 
-        stage('SCA with OWASP Dependency Check'){
+       // stage('SCA with OWASP Dependency Check'){
 
-             steps {
+         //    steps {
 
-                 echo 'Software Composition Analysis ....'
+           //      echo 'Software Composition Analysis ....'
 
                  //dependencyCheck additionalArguments:  '--scan /var/lib/jenkins/workspace/DevSecOps/ --format xml',
                    //              odcInstallation: 'owasp-dependency-check'
                 
-             }     
+             //}     
                  
 
-        }
+       // }
 
         stage('Building a Docker container') {
 
             steps {
 
-                 sh 'docker build -t flask-app:1.0.0 /var/lib/jenkins/workspace/DevSecOps/'
+                echo 'Building the docker image ...'
 
+                script {
+
+                 def result = sh(script: 'docker build -t flask-app:1.0.0 /var/lib/jenkins/workspace/DevSecOps/', returnStatus:true)
+                
+                 if(result !=0){
+
+                    error('Security issues has been reported !')
+                 }
+
+                }
             }
         }
 
@@ -62,7 +80,24 @@ pipeline {
 
             steps {
 
-                sh 'trivy image --security-checks vuln,config flask-app:1.0.0'
+                echo 'Scanning the docker image for security issues ...'
+                script {
+                def result = sh(script:'trivy image --security-checks vuln,config flask-app:1.0.0',returnStatus:true)
+                
+                if(result!=0){
+                    error('Security issues has been reported ... !')
+                }
+
+                }
+            }
+        }
+
+        stage('DAST with OWASP ZAP'){
+
+            steps {
+
+                echo 'Scanning dynamically the Flask APp for security issues ...'
+                
             }
         }
 
