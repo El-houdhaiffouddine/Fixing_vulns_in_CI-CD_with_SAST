@@ -8,7 +8,6 @@ pipeline {
     }
 
     stages {
-        
         stage('Pre-commit'){
             steps {
                 
@@ -36,7 +35,36 @@ pipeline {
             }
         }
 
-        
+        stage('SCA with OWASP Dependency Check'){
+
+             steps {
+
+                 echo 'Software Composition Analysis ....'
+
+                 dependencyCheck additionalArguments:  '--scan /var/lib/jenkins/workspace/DevSecOps/ --format xml',
+                                 odcInstallation: 'owasp-dependency-check'
+                
+             }     
+                 
+
+        }
+
+        stage('Building a Docker container') {
+
+            steps {
+
+                 sh 'docker build -t flask-app:1.0.0 -f /var/lib/jenkins/workspace/DevSecOps/Flask-App ./var/lib/jenkins/workspace/DevSecOps/'
+
+            }
+        }
+
+        stage('Scan Docker image with trivy'){
+
+            steps {
+
+                sh 'trivy image --security-checks vuln,config flask-app:1.0.0'
+            }
+        }
 
     }
 
