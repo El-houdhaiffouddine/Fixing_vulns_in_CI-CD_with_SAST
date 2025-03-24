@@ -24,7 +24,7 @@ def create_users_table():
 
      with new_engine.connect() as connection:
         
-        connection.execute(text(f"CREATE TABLE IF NOT EXISTS {table} (first_name varchar(20), last_name varchar(20), id int AUTO_INCREMENT, gender varchar(6),salary decimal(10,2), CONSTRAINT pr_key PRIMARY KEY (id) )"))
+        connection.execute(text("CREATE TABLE IF NOT EXISTS users (first_name varchar(20), last_name varchar(20), id int AUTO_INCREMENT, gender varchar(6),salary decimal(10,2), CONSTRAINT pr_key PRIMARY KEY (id) )"))
         connection.commit()
 
   except Exception as e:
