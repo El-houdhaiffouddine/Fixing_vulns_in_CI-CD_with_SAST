@@ -4,6 +4,7 @@ pipeline {
     environment {
             
             GITHUB_TOKEN= credentials('github_token')
+            SEMGREP_APP_TOKEN = credentials('SEMGREP_APP_TOKEN')
 
     }
 
@@ -40,6 +41,19 @@ pipeline {
                     }
                 }
             
+            }
+        }
+
+        stage('SAST with semgrep') {
+
+            steps {
+
+                script {
+                    def result = sh(script: '/home/user1/flask/semgrep ci',returnStatus=true)
+                    if(result != 0){
+                        error('Security issues has been reported by Semgrep !')
+                    }
+                }
             }
         }
 
@@ -92,12 +106,16 @@ pipeline {
             }
         }
 
+
         stage('DAST with OWASP ZAP'){
 
             steps {
 
                 echo 'Scanning dynamically the Flask APp for security issues ...'
-                
+                script {
+
+                    def result = 
+                }
             }
         }
 

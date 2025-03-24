@@ -10,27 +10,34 @@ LABEL version="1.0.0"
 #This case is about specifying the description of our image.
 LABEL description="This is a Dockerfile which creates a docker image which \
                     will run a docker container which contains a Flask app "
+
 #This Docker instruction permits to specify the maintainer of this Flask image.
 #This also can be done by using LABEL instruction
 LABEL org.opencontainers.image.authors="Ben"
 
-#This command or instruction permits to specify
-#the working directory of the Flask image.    
-WORKDIR /flask-app
-
 #This instructions allows us to install in the container all the required 
 #packages that our Flask App needs to be run successfully.
-RUN apt update && apt install python3 python3-pip -y && \
-    pip3 install Flask SQLAlchemy pymysql
+RUN apt update && apt install python3 python3-pip python3-venv -y && \
+    python3 -m venv flask && pip3 install Flask SQLAlchemy pymysql && \
+    useradd -m -d /home/flask -s /bin/bash flask && mkdir -p /home/flask/flask-app && \
+    chown -R flask:flask /home/flask/flask-app
+    
 
 #This one allows us to specify the external port in which users should
 #use to access on the Flask App.
-EXPOSE 8080
+EXPOSE 8081
+
+#This command or instruction permits to specify
+#the working directory of the Flask image.    
+WORKDIR /home/flask/flask-app
+
+#This command will assing the default user of the container to flask
+USER flask
 
 #As the source code of our Flask App is stored on Github,this command allows
 # us to download it directly and copy it in the Flask container 
-ADD . /flask-app/
+COPY . /home/flask/flask-app/
 
 #This instruction allows us to specify the default command which docker will
 #run once the Flask App container is in runnning mode
-CMD [ "/bin/bash","-c","sleep 60 && python3 /flask-app/database_and_table_creation.py && python3 main.py" ]
+CMD [ "/bin/bash","-c","sleep 60 && python3 /home/flask/flask-app/database_and_table_creation.py && python3 /home/flask/flask-app/main.py" ]
