@@ -112,10 +112,7 @@ pipeline {
             steps {
 
                 echo 'Scanning dynamically the Flask APp for security issues ...'
-                script {
-
-                    def result = 
-                }
+                
             }
         }
 
