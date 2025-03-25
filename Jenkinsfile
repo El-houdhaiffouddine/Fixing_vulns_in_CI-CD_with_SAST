@@ -111,7 +111,7 @@ pipeline {
             steps {
 
                 echo 'Deployment of the Flask App with Docker Compose'
-                sh 'docker compose up'
+                sh 'docker compose up -d'
             }
         }
 
