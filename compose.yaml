@@ -20,6 +20,7 @@ services:
    
 networks:
    my-network:
+      name: flask-network
       ipam:
          config:
             - subnet: 192.168.1.0/24
