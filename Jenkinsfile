@@ -48,12 +48,11 @@ pipeline {
 
             steps {
 
-                script {
-                    def result = sh(script: '''docker pull semgrep/semgrep && \
-                                            docker run --rm -v "${PWD}:/src" -e SEMGREP_APP_TOKEN=${SEMGREP_APP_TOKEN} --workdir ${PWD} semgrep/semgrep semgrep ci''',returnStatus=true)
-                    if(result != 0){
-                        error('Security issues has been reported by Semgrep !')
-                    }
+                echo 'Static Analysis with Semgrep'
+
+                sh '''docker pull semgrep/semgrep && \
+                      docker run --rm -v "${PWD}:/src" -e SEMGREP_APP_TOKEN=${SEMGREP_APP_TOKEN} \
+                      --workdir ${PWD} semgrep/semgrep semgrep ci'''
                 }
             }
         }
