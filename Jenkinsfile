@@ -49,7 +49,7 @@ pipeline {
             steps {
 
                 script {
-                    def result = sh(script: '/home/user1/flask/semgrep ci',returnStatus=true)
+                    def result = sh(script: 'cd /home/flask/flask-app && /home/user1/flask/semgrep ci',returnStatus=true)
                     if(result != 0){
                         error('Security issues has been reported by Semgrep !')
                     }
