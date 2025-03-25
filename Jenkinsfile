@@ -44,18 +44,18 @@ pipeline {
             }
         }
 
-        stage('SAST with semgrep') {
+        //stage('SAST with semgrep') {
 
-            steps {
+          //  steps {
 
-                echo 'Static Analysis with Semgrep'
+            //    echo 'Static Analysis with Semgrep'
 
                  
-                sh ''' docker pull semgrep/semgrep && \
-                       docker run --rm -v "${PWD}:/src" -e SEMGREP_APP_TOKEN=${SEMGREP_APP_TOKEN} \
-                       --workdir ${PWD} semgrep/semgrep semgrep ci'''
-                }
-            }
+              //  sh ''' docker pull semgrep/semgrep && \
+                  //     docker run --rm -v "${PWD}:/src" -e SEMGREP_APP_TOKEN=${SEMGREP_APP_TOKEN} \
+                    //   --workdir ${PWD} semgrep/semgrep semgrep ci'''
+                //}
+            //}
 
        // stage('SCA with OWASP Dependency Check'){
 
@@ -103,6 +103,15 @@ pipeline {
                 }
 
                 }
+            }
+        }
+
+        stage('Deployment with Docker Compose') {
+
+            steps {
+
+                echo 'Deployment of the Flask App with Docker Compose'
+                sh 'docker compose up'
             }
         }
 

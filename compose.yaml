@@ -1,6 +1,6 @@
 services:
    flask-web-app:
-      build: .
+      image: flask-app:1.0.0
       container_name: Flask-container
       networks:
          my-network:
