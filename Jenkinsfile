@@ -55,7 +55,6 @@ pipeline {
                       --workdir ${PWD} semgrep/semgrep semgrep ci'''
                 }
             }
-        }
 
        // stage('SCA with OWASP Dependency Check'){
 
