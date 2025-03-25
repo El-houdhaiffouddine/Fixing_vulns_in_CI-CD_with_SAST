@@ -50,9 +50,10 @@ pipeline {
 
                 echo 'Static Analysis with Semgrep'
 
-                sh '''docker pull semgrep/semgrep && \
-                      docker run --rm -v "${PWD}:/src" -e SEMGREP_APP_TOKEN=${SEMGREP_APP_TOKEN} \
-                      --workdir ${PWD} semgrep/semgrep semgrep ci'''
+                sh ''' cd /var/lib/jenkins/workspace/DevSecOPs/ && \
+                       docker pull semgrep/semgrep && \
+                       docker run --rm -v "${PWD}:/src" -e SEMGREP_APP_TOKEN=${SEMGREP_APP_TOKEN} \
+                       --workdir ${PWD} semgrep/semgrep semgrep ci'''
                 }
             }
 
