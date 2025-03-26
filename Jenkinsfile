@@ -122,7 +122,7 @@ pipeline {
 
                 echo 'Scanning dynamically the Flask APP for security issues ...'
 
-                arachniScanner url: 'http://192.168.1.2:8081/', checks: '*'
+                arachniScanner checks: '*', url: 'http://192.168.1.2:8081/'
                 
             }
         }
