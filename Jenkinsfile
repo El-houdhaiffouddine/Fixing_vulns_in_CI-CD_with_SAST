@@ -116,11 +116,13 @@ pipeline {
         }
 
 
-        stage('DAST with OWASP ZAP'){
+        stage('DAST with Arachni'){
 
             steps {
 
                 echo 'Scanning dynamically the Flask APP for security issues ...'
+
+                arachniScanner url: 'http://192.168.1.2:8081/', checks: '*'
                 
             }
         }
