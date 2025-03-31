@@ -125,6 +125,11 @@ pipeline {
                 script {
 
                     def result = sh(script: '/home/user1/Downloads/ZAP_2.16.1/zap.sh -cmd -port 8085 -quickurl http://192.168.1.2:8081/ -quickout /var/lib/jenkins/workspace/DevSecOps/report.html',returnStatus:true)
+
+                    if (result != 0){
+
+                        error('OWASP ZAP has reported a security issues ... !')
+                    }
                 }
                 
             }
