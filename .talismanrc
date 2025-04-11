@@ -1,4 +1,6 @@
 fileignoreconfig:
 - filename: Jenkinsfile
   checksum: 2d054e656706a15b9279963acf8048462bac12d1ac0fb3a4de877adcee8d575c
+- filename: database.py
+  checksum: 84880f4ac712720238bcae2c2fb8dde737bb4b42b7f6d9400e699d35f9a3628c
 version: "1.0"
