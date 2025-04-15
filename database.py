@@ -1,8 +1,11 @@
 from Gender import Gender
 from sqlalchemy import create_engine, text
 
+username = "root"
+password = ""
+
 # Modify the below IP to add the IP of your database and add a port number if necessary
-engine = create_engine("mysql+pymysql://root:@192.168.1.3")
+engine = create_engine(f"mysql+pymysql://{username}:{password}@192.168.1.3")
 
 password = "azerty"
 
@@ -17,7 +20,7 @@ def create_database():
 
 
 # Modify the below IP to add the IP of your database and add a port number if necessary
-new_engine = create_engine("mysql+pymysql://root:@192.168.1.3/users_database")
+new_engine = create_engine(f"mysql+pymysql://{username}:{password}@192.168.1.3/users_database")
 table = "users"
 
 def create_users_table():
