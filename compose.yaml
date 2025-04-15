@@ -18,7 +18,7 @@ services:
       environment:
          - MYSQL_ROOT_PASSWORD="kshhf12-asd"
          - MYSQL_USER="ben"
-         - MYSQL_PASSWORD="sygd-25"
+         - MYSQL_PASSWORD="sygd-26"
    
 networks:
    my-network:
