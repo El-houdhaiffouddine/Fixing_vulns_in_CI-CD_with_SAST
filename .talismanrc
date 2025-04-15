@@ -1,0 +1,6 @@
+fileignoreconfig:
+- filename: compose.yaml
+  checksum: e64497dc259676aba63a7648104df60bc9140e2bb6ca7a236093486e729d4a20
+- filename: database.py
+  checksum: ddc44b54fbfa6f44194bedf77ae9403d375cf952612618afcb2fa03e0481a0e5
+version: "1.0"
