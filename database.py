@@ -7,8 +7,6 @@ password = ""
 # Modify the below IP to add the IP of your database and add a port number if necessary
 engine = create_engine(f"mysql+pymysql://{username}:{password}@192.168.1.3")
 
-password = "azerty"
-
 def create_database():
   try:  
       with engine.connect() as connection:
