@@ -150,7 +150,7 @@ def display_user_infos(f_name:str):
    try:
 
       with new_engine.connect() as connection:
-           result = connection.execute(text(f"SELECT first_name,last_name,id,gender,salary FROM users WHERE (first_name=:f_name)"),[{"f_name":f_name}])
+           result = connection.execute(text("SELECT first_name,last_name,id,gender,salary FROM users WHERE (first_name=:f_name)"),[{"f_name":f_name}])
       
            if result: 
 
@@ -176,7 +176,7 @@ def display_user_infos_by_id(id:int):
    user = []
     
    with new_engine.connect() as connection:
-      result = connection.execute(text(f"SELECT first_name,last_name,gender,salary FROM users WHERE (id=:id)"),[{"id":id}])
+      result = connection.execute(text("SELECT first_name,last_name,gender,salary FROM users WHERE (id=:id)"),[{"id":id}])
 
       for row in result:
          user.append(row.first_name)
