@@ -18,7 +18,7 @@ LABEL org.opencontainers.image.authors="Ben"
 #This instructions allows us to install in the container all the required 
 #packages that our Flask App needs to be run successfully.
 RUN apt update && apt install python3 python3-pip python3-venv -y && \
-    python3 -m venv flask && pip3 install Flask SQLAlchemy pymysql
+    python3 -m venv flask && pip3 install Flask SQLAlchemy pymysql cryptography
     
 
 #useradd -m -d /home/flask -s /bin/bash flask && mkdir -p /home/flask/flask-app && \
