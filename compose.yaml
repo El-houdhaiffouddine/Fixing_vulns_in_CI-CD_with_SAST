@@ -16,7 +16,7 @@ services:
       volumes:
          - flask-volume:/flask-app/flask-volume:rw
       environment:
-         - MYSQL_ROOT_PASSWORD=weak_password
+         - MYSQL_ROOT_PASSWORD=weak
          - MYSQL_PASSWORD=weak
          - MYSQL_USER=ben
          - MYSQL_DATABASE=users_database
