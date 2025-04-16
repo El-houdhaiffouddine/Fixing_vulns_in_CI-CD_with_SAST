@@ -1,7 +1,6 @@
 from Gender import Gender
 from sqlalchemy import create_engine, text
 
-
 username = "ben"
 password = "weak_password"
 
