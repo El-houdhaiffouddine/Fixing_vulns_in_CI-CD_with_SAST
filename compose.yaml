@@ -41,10 +41,10 @@ volumes:
 
 secrets:
   mysql_root_password:
-    file: ./mysql_root_password.txt
+    file: /home/user1/Python_with_Flask/mysql_root_password.txt
   mysql_password:
-    file: ./mysql_password.txt
+    file: /home/user1/Python_with_Flask/mysql_password.txt
   mysql_user:
-    file: ./mysql_user.txt
+    file: /home/user1/Python_with_Flask/mysql_user.txt
   mysql_database:
-    file: ./mysql_database.txt 
+    file: /home/user1/Python_with_Flask/mysql_database.txt 
