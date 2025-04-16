@@ -12,7 +12,7 @@ pipeline {
         stage('Scan for secret with Talisman and Trufflehog'){
             steps {
                 
-                echo '####### Pre-commit stage ######\n'
+                echo '***** Scan for secrets with Trufflehog *****\n'
                 echo 'Cheking for secrets ...\n'
                 script {
 
@@ -32,7 +32,7 @@ pipeline {
 
         stage('SAST with bandit'){
             steps {
-                echo '###### Static Analysis with Bandit #######\n'
+                echo '***** Static Analysis with Bandit *****\n'
 
                 script {
                 def result = sh(script:'/home/user1/flask/bin/bandit -r /var/lib/jenkins/workspace/DevSecOps/', returnStatus:true)
@@ -75,7 +75,7 @@ pipeline {
 
             steps {
 
-                echo 'Building the docker image ...'
+                echo '***** Building the docker image with Docker *****'
 
                 script {
 
@@ -94,7 +94,7 @@ pipeline {
 
             steps {
 
-                echo 'Scanning the docker image for security issues ...'
+                echo '***** Scanning the docker image for security issues with Trivy *****'
                 script {
                 def result = sh(script:'trivy image --security-checks vuln,config flask-app:1.0.0',returnStatus:true)
                 
@@ -110,7 +110,7 @@ pipeline {
 
             steps {
 
-                echo 'Deployment of the Flask App with Docker Compose'
+                echo '***** Deployment of the Flask App with Docker Compose *****'
                 sh 'docker compose up -d'
             }
         }
@@ -120,7 +120,7 @@ pipeline {
 
             steps {
 
-                echo 'Scanning dynamically the Flask APP for security issues ...'
+                echo '***** Scanning dynamically the Flask APP for security issues with ZAP *****'
 
                 script {
 
