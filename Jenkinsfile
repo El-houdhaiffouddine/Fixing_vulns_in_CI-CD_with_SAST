@@ -30,15 +30,15 @@ pipeline {
 
         //}
 
-        stage('SAST with bandit'){
+        stage('SAST with bandit and Semgrep'){
             steps {
-                echo '***** Static Analysis with Bandit *****\n'
+                echo '***** Static Analysis with Bandit and Semgrep *****\n'
 
                 script {
-                def result1 = sh(script:'/home/user1/flask/bin/bandit -r /var/lib/jenkins/workspace/DevSecOps/', returnStatus:true)
                 def result2 = sh(script:'/home/user1/flask/bin/semgrep ci', returnStatus:true)
+                def result1 = sh(script:'/home/user1/flask/bin/bandit -r /var/lib/jenkins/workspace/DevSecOps/', returnStatus:true)
 
-                    if(result1 !=0 && result2!=0){
+                    if(result1 !=0 || result2!=0){
                        error('Security vulnerabilities has been reported ... !')
                     }
                 }
