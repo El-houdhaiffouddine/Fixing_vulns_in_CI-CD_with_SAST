@@ -1,9 +1,8 @@
 from Gender import Gender
 from sqlalchemy import create_engine, text
-import os
 
-username = os.environ.get('MYSQL_USER')
-password = os.environ.get('MYSQL_PASSWORD')
+username = "weak_password"
+password = "weak_password"
 
 # Modify the below IP to add the IP of your database and add a port number if necessary
 engine = create_engine(f"mysql+pymysql://{username}:{password}@192.168.1.3")
