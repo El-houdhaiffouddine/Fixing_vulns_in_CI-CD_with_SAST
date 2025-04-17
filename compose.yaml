@@ -7,6 +7,12 @@ services:
             ipv4_address: 192.168.1.2 
       depends_on:
          - mysql-database
+      environment:
+         - MYSQL_USER_FILE=/run/secrets/mysql_user
+         - MYSQL_PASSWORD_FILE=/run/secrets/mysql_password
+      secrets:
+         - mysql_user
+         - mysql_password
 
    mysql-database:
       image: mysql:latest
