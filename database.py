@@ -1,15 +1,9 @@
 from Gender import Gender
 from sqlalchemy import create_engine, text
-import os
 
-username_file = os.environ.get('MYSQL_USER_FILE')
-password_file = os.environ.get('MYSQL_PASSWORD_FILE')
 
-with open(username_file,'r') as f:
-   username = f.read().strip()
-
-with open(password_file,'r') as f:
-   password = f.read().strip()
+username = "ben"
+password = "weak_password"
 
 # Modify the below IP to add the IP of your database and add a port number if necessary
 engine = create_engine(f"mysql+pymysql://{username}:{password}@192.168.1.3")
@@ -156,7 +150,7 @@ def display_user_infos(f_name:str):
    try:
 
       with new_engine.connect() as connection:
-           result = connection.execute(text("SELECT first_name,last_name,id,gender,salary FROM users WHERE (first_name=:f_name)"),[{"f_name":f_name}])
+           result = connection.execute(text(f"SELECT first_name,last_name,id,gender,salary FROM users WHERE (first_name=:f_name)"),[{"f_name":f_name}])
       
            if result: 
 
@@ -182,7 +176,7 @@ def display_user_infos_by_id(id:int):
    user = []
     
    with new_engine.connect() as connection:
-      result = connection.execute(text("SELECT first_name,last_name,gender,salary FROM users WHERE (id=:id)"),[{"id":id}])
+      result = connection.execute(text(f"SELECT first_name,last_name,gender,salary FROM users WHERE (id=:id)"),[{"id":id}])
 
       for row in result:
          user.append(row.first_name)

@@ -2,7 +2,7 @@ fileignoreconfig:
 - filename: README.md
   checksum: f0d027c8d94513bd87a738d7659304e5ff3f798142ab9c6501ac0c4df8c659c1
 - filename: compose.yaml
-  checksum: d37f7d36af85225c7f304483f3e13a96e0c9f8bbaf87d0331cde0672cf1b58e3
+  checksum: 7801b5d870075769fec40ea83655801748fbf14b7dcda2dfbbd9540048a859cb
 - filename: database.py
-  checksum: fa5cade669c0e3e927d70382b363ae421f308e8c03f6eb12816fb0335e72ba38
+  checksum: d907119c1eff3be4fcdae2321748765b9ce99e0faff83e9a4f34356d2c943812
 version: "1.0"

@@ -7,12 +7,6 @@ services:
             ipv4_address: 192.168.1.2 
       depends_on:
          - mysql-database
-      environment:
-         - MYSQL_USER_FILE=/run/secrets/mysql_user
-         - MYSQL_PASSWORD_FILE=/run/secrets/mysql_password
-      secrets:
-         - mysql_user
-         - mysql_password
 
    mysql-database:
       image: mysql:latest
@@ -22,16 +16,10 @@ services:
       volumes:
          - flask-volume:/flask-app/flask-volume:rw
       environment:
-         - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/mysql_root_password
-         - MYSQL_PASSWORD_FILE=/run/secrets/mysql_password
-         - MYSQL_USER_FILE=/run/secrets/mysql_user
-         - MYSQL_DATABASE_FILE=/run/secrets/mysql_database
-
-      secrets:
-         - mysql_root_password
-         - mysql_password
-         - mysql_user
-         - mysql_database
+         - MYSQL_ROOT_PASSWORD=weak_password
+         - MYSQL_PASSWORD=weak_password
+         - MYSQL_USER=ben
+         - MYSQL_DATABASE=users_database
 
    
 networks:
@@ -45,12 +33,3 @@ networks:
 volumes:
    flask-volume:
      
-secrets:
-   mysql_root_password:
-     file: /home/user1/Python_with_Flask/mysql_root_password.txt
-   mysql_password:
-     file: /home/user1/Python_with_Flask/mysql_password.txt
-   mysql_user:
-      file: /home/user1/Python_with_Flask/mysql_user.txt
-   mysql_database:
-       file: /home/user1/Python_with_Flask/mysql_database.txt
