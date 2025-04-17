@@ -9,26 +9,26 @@ pipeline {
     }
 
     stages {
-        //stage('Scan for secret with Talisman and Trufflehog'){
-          //  steps {
+        stage('Scan for secret with Talisman and Trufflehog'){
+          steps {
                 
-            //    echo '***** Scan for secrets with Trufflehog *****\n'
-              //  echo 'Cheking for secrets ...\n'
-               // script {
+                echo '***** Scan for secrets with Trufflehog *****\n'
+                echo 'Cheking for secrets ...\n'
+                script {
 
-                 //def result = sh(script:'trufflehog github --repo=https://github.com/El-houdhaiffouddine/Python_with_Flask.git --results=verified,unknown --token=${GITHUB_TOKEN}',returnStatus:true)
+                 def result = sh(script:'trufflehog github --repo=https://github.com/El-houdhaiffouddine/Python_with_Flask.git --results=verified,unknown --token=${GITHUB_TOKEN}',returnStatus:true)
                 
-                 //if(result != 0){
+                 if(result != 0){
 
-                   // error('Security vulnerabilities has been reported ... !')
-                // }
+                    error('Security vulnerabilities has been reported ... !')
+                 }
                  
-               // }
+                }
 
 
-            //}
+            }
 
-        //}
+        }
 
         stage('SAST with bandit and Semgrep'){
             steps {
