@@ -124,4 +124,4 @@ def updateEmployee():
 
 if __name__ == '__main__':
 
-    app.run(host='192.168.1.2',port=8081,debug=False)
+    app.run(host='192.168.1.2',port=8081,debug=True)
