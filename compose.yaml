@@ -20,6 +20,7 @@ services:
          - MYSQL_PASSWORD=weak_password
          - MYSQL_USER=ben
          - MYSQL_DATABASE=users_database
+
    
 networks:
    my-network:
