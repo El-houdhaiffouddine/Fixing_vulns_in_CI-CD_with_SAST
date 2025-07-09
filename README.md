@@ -1,4 +1,4 @@
-# DevSecOps: How to identify and fix security problems in code with SAST tools
+# DevSecOps: How to identify and fix security problems in CI/CD with SAST tools
 
 <h1>1- Introduction</h1><br/>
 <p>The creation of a secure Software is primordial in a world dominated by cyberattacks. In this project we're going to show how we can create a secure software by introducing security best practice in the CI/CD.<br/></p>
