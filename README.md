@@ -3,7 +3,7 @@
 <h1>1- Introduction</h1><br/>
 <p>The creation of a secure Software is primordial in a world dominated by cyberattacks. In this project we're going to show how we can create a secure software by introducing security best practice in the CI/CD.<br/></p>
 <h2>2- Project Diagram</h2><br/>
-<div><img href="assets/project_diagram.png" alt="DevSecOps diagram" width="100%"></div><br/>
+<div><img href="/assets/project_diagram.png" alt="DevSecOps diagram" width="100%"></div><br/>
 <h2>3- Our Flask App</h2>
 <p>To demonstrate how to fix security problems in the code with SAST tools, we created a simple Flask App which manages Employees by doing CRUD (Create, Read, Update, Delete). We contenerise the App inside a docker container to facilitate the app to be run without the need of making configuration.
 Before running the App, we need to change the MYSQL IP address in the database.py file in line 5 and 18 and if your database is listening in another port than the default 3306, so you can specify the port in those lines like this: <b>engine = create_engine("mysql+pymysql://mysql_username:mysql_password@mysql_ip:mysql_port/mysql_database_name")</b>.<br/>
