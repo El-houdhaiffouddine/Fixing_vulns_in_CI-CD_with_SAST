@@ -22,5 +22,5 @@ To delete an Employee in the database, we need to send a <b>DELETE</b> request f
 
 
 </p><br/>
-<h2>4- Watch the video to see how to fix security problems in CI/CD</h2><br/>
+<h2>4- Watch the video to learn how to fix security problems in CI/CD</h2><br/>
 <a href="https://www.linkedin.com/posts/e-ben-sidi-87b51a242_devsecops-jenkins-sast-activity-7318976270577373184-Oz1F?utm_source=share&utm_medium=member_desktop&rcm=ACoAADw7tV8BqIg_cwvMuPaiSHCfVjgxeNX_TUI">Please click here to watch the video</a>
